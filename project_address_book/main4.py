@@ -116,6 +116,9 @@ except NameError as err:
 # If can be used as an expression.
 "yahoo!" if 3 > 2 else 2  # => "yahoo!"
 
+
+# == Lists ==
+
 #Lists store sequences.
 li = []
 # You can start with a prefilled list.
@@ -142,3 +145,74 @@ try:
 except IndexError as err:
     # pass  # Pass is just a no-op. Usually you would do recovery here.
     print "Custom ERROR: 'li[4]' - list index out of range."
+
+# You can look at ranges with slice syntax.
+# (It's a closed/open range for you mathy types.)
+li[1:3]  # => [2, 4]
+# Omit the beginning.
+li[2:]  # => [4, 3]
+# Omit the end.
+li[:3]  # => [1, 2, 4]
+
+# Remove arbitrary elements from a list with "del".
+del li[2]  # li is now [1, 2, 3]
+
+# You can add lists.
+li + other_li  # => [1, 2, 3, 4, 5, 6] - Note: li and other_li is left alone.
+
+# Concatenate lists with "extend()".
+li.extend(other_li)  # => Now li is [1, 2, 3, 4, 5, 6]
+
+# Check for existence in a list with "in".
+1 in li  # => True
+
+# Examine the length with "len()".
+len(li)  # => 6
+
+
+# == Tuples ==
+
+# Tuples are like lists but are immutable.
+# Note: immutable - unchanging over time or unable to be changed.
+tup = (1, 2, 3)
+tup[0]  # => 1
+
+try:
+    tup[0] = 3  # => Raises a TypeError
+except TypeError as err:
+    # pass  # Pass is just a no-op. Usually you would do recovery here.
+    print """Custom ERROR: 'tup[0] = 3' - 'tuple' object does not support \
+item assignment."""
+
+# You can do all those list thingies on tuples too.
+len(tup)  # => 3
+tup + (4, 5, 6)  # => (1, 2, 3, 4, 5, 6)
+tup[:2]  # => (1, 2)
+2 in tup  # => True
+
+# You can unpack tuples (or lists) into variables.
+a, b, c = (1, 2, 3)  # a is now 1, b is now 2, and c is now 3.
+# Tuples are created by default if you leave out the parentheses.
+d, e, f = 4, 5, 6
+# Now look how easy it is to swap two values.
+e, d = d, e  # d is now 5 and e is now 4.
+
+
+# == Dictionaries ==
+
+# Dictionaries store mappings.
+empty_dict = {}
+# Here is a prefilled dictionary.
+filled_dict = {"one": 1, "two": 2, "three": 3}
+
+# Look up values with [].
+filled_dict["one"]  # => 1
+
+# Get all keys as list with "keys()".
+filled_dict.keys()  # => ["three", "two", "one"]
+# Note: dictionary key ordering is not guaranteed.
+# Your results might now match this exactly.
+
+# Get all values as a list with "values()".
+filled_dict.values()  # => [3, 2, 1]
+# Note: same as above regarding key ordering.
