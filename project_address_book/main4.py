@@ -216,3 +216,52 @@ filled_dict.keys()  # => ["three", "two", "one"]
 # Get all values as a list with "values()".
 filled_dict.values()  # => [3, 2, 1]
 # Note: same as above regarding key ordering.
+
+# Check for existence of keys in a dictionary with "in".
+"one" in filled_dict  # => True
+1 in filled_dict  # => False
+
+try:
+    # Looking up a non-existent key is a KeyError.
+    filled_dict["four"]
+except KeyError as err:
+    print """Custom ERROR: filled_dict["four"] - non-existent key!"""
+
+# Use "get()" method to avoid the KeyError.
+filled_dict.get("one")  # => 1
+filled_dict.get("four")  # => None
+# The get method supports a default argument when the value is missing.
+filled_dict.get("one", 4)  # => 1
+filled_dict.get("four", 4)  # => 4
+
+# "setdefault()" method is a safe way to add new key-value pair into
+# a dictionary.
+filled_dict.setdefault("five", 5)  # filled_dict["five"] is set to 5 when it's
+                                   # value is not set.
+filled_dict.setdefault("five", 6)  # filled_dict["five"] is still 5.
+
+
+# == Sets store ... well sets ==
+empty_set = set()
+# Initialize a "set()" with a bunch of values.
+some_set = set([1, 2, 2, 3, 4])  # => some_set is now set([1, 2, 3, 4])
+
+# Since Python 2.7, {} can be used to declare a set.
+filled_set = {1, 2, 2, 3, 4}  # => {1, 2, 3, 4}
+
+# Add more items to a set.
+filled_set.add(5)  # => filled_set is now {1, 2, 3, 4, 5}
+
+# Do set intersection with "&".
+other_set = {3, 4, 5, 6}
+filled_set & other_set  # => {13, 4, 5}
+
+# Do set union with "|".
+filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
+
+# Do set difference with "-".
+{1, 2, 3, 4} - {2, 3, 5}  # => {1, 4}
+
+# Check for existence in a set with in.
+2 in filled_set  # => True
+10 in filled_set  # => False
